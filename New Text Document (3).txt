@@ -1,0 +1,631 @@
+local Library = game:HttpGet("https://raw.githubusercontent.com/Myvkhuy/One-Ui/refs/heads/Bearlib/raw.txt")
+local BearLib = loadstring(Library)()
+
+local MainUI = BearLib:CreateWindow({
+    Image = "rbxassetid://106113185922406",
+    Subtitle = "| Tổng Hợp",
+    Title = "kietdpezai"
+})
+
+-- === TẠO CÁC TAB ===
+local TabAdmin = MainUI:AddTab("Admin")
+local TabInfo = MainUI:AddTab("Info")
+local TabBloxFruit = MainUI:AddTab("Blox Fruit")
+local TabFixLag = MainUI:AddTab("Fix Lag")
+local TabMod = MainUI:AddTab("Mod")
+local Tab99Night = MainUI:AddTab("99 Night")
+local TabSever = MainUI:AddTab("Sever")
+local TabTsunami = MainUI:AddTab("Tsunami")
+local TabStealBrainrot = MainUI:AddTab("Steal a brainrot")
+local TabFisch = MainUI:AddTab("Fisch")
+local TabDoors = MainUI:AddTab("Doors")
+local TabTheForge = MainUI:AddTab("The Forge")
+local TabPlantsVsBrainrot = MainUI:AddTab("Plants vs brainrot")
+local TabZombieAttacks = MainUI:AddTab("Zombie attacks")
+local TabBeeSwarm = MainUI:AddTab("Bee Swarm")
+local TabKingLegacy = MainUI:AddTab("King Legacy")
+local TabBuildABoat = MainUI:AddTab("Build a boat")
+local TabMusic = MainUI:AddTab("Music")
+local TabKhac = MainUI:AddTab("Khác")
+
+-- === TAB: INFO ===
+local InfoGroup = TabInfo:AddLeftGroupbox("Liên Hệ & Hỗ Trợ")
+InfoGroup:AddButton({
+    Callback = function()
+        setclipboard("tiktok.com/@kietlacnehehe")
+        BearLib:Notify({
+            Description = "Cope rồi thằng ngu ",
+            Duration = 3,
+            Title = "Đã copy link TikTok"
+        })
+    end,
+    Title = "📱 TikTok Kiet depzai"
+})
+-- === TAB: Admin ===
+
+
+
+-- === TAB: BLOX FRUIT ===
+-- Script kietdpezai 
+local PvPGroup = TabBloxFruit:AddRightGroupbox("farm")
+local pvpScripts = {
+    {Title = "kietdpezai redz", url = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzai/refs/heads/main/redzhubfakevip.txt"))()"},
+    {Title = "kietdepzai", url = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiv2/refs/heads/main/kietdepzai-bananalua-1.txt"))()"},
+}
+for _, script in ipairs(pvpScripts) do
+    PvPGroup:AddButton({
+        Callback = function()
+            loadstring(game:HttpGet(script.url))()
+        end,
+        Title = script.Title
+    })
+end
+-- PvP
+local PvPGroup = TabBloxFruit:AddRightGroupbox("PvP")
+local pvpScripts = {
+    {Title = "CentuDox.xyz", url = "https://raw.githubusercontent.com/Huylovemy/Pvp/refs/heads/main/PvPuinew"},
+    {Title = "onion13", url = "https://raw.githubusercontent.com/onion132005-bit/esponion.lua/refs/heads/main/onion13v4.lua"},
+    {Title = "Hermanos'Dev|PVP", url = "https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua"},
+    {Title = "Void Hub", url = "https://raw.githubusercontent.com/VoidDeveloper67/VoidHub/refs/heads/main/VoidHub"},
+    {Title = "TOP_PVP", url = "https://raw.githubusercontent.com/Krovyn/KrovynHub/refs/heads/main/TOP_PVP"},
+    {Title = "MENU", url = "https://raw.githubusercontent.com/Huylovemy/PvPvip/refs/heads/main/Pvp"},
+    {Title = "Menu 1", url = "https://raw.githubusercontent.com/Huylovemy/Pvp/refs/heads/main/Huypvp"},
+    {Title = "Menu 2", url = "https://raw.githubusercontent.com/Huylovemy/Pvp/refs/heads/main/Huyz"},
+    {Title = "VanThanhIOS Hitbox", url = "https://raw.githubusercontent.com/VanThanhIOS/OniiChanVanThanhIOS/refs/heads/main/oniichanpakavanthanhios"}
+}
+for _, script in ipairs(pvpScripts) do
+    PvPGroup:AddButton({
+        Callback = function()
+            loadstring(game:HttpGet(script.url))()
+        end,
+        Title = script.Title
+    })
+end
+
+-- Farm
+local FarmGroup = TabBloxFruit:AddLeftGroupbox("Farm")
+local farmScripts = {
+    {Title = "Rise-evo", url = "https://rise-evo.xyz/apiv3/main.lua"},
+    {Title = "Anniecreat", url = "https://raw.githubusercontent.com/Anniecreate86/BloxFruits/refs/heads/main/BetaHub-BF"},
+    {Title = "Quan Tum Onyx", url = "https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"},
+    {Title = "Teddy Hud", url = "https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TeddyHub.lua"},
+    {Title = "Anhdepzai hub", url = "https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubBeta.lua"},
+    {Title = "Leaf hub", url = "https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"},
+    {Title = "Aurora", url = "https://raw.githubusercontent.com/Jadelly261/BloxFruits/main/Aurora"},
+    {Title = "NHT X hub", url = "https://raw.githubusercontent.com/trongdeptraihucscript/Main/refs/heads/main/Hoangtrongdepzai.lua"},
+    {Title = "Bear hub", url = "https://raw.githubusercontent.com/Huylovemy/Huyscript/refs/heads/main/newscript.txt"},
+    {Title = "Night hud", url = "https://raw.githubusercontent.com/WhiteX1208/Scripts/refs/heads/main/BF-Beta.lua"},
+    {Title = "Tuấn Anh IOS", url = "https://raw.githubusercontent.com/AnhTuanDzai-Hub/TuanAnhIOS/refs/heads/main/TuanAnhIOS.lua"}
+}
+for _, script in ipairs(farmScripts) do
+    FarmGroup:AddButton({
+        Callback = function()
+            loadstring(game:HttpGet(script.url))()
+        end,
+        Title = script.Title
+    })
+end
+
+-- Redz fake
+local RedzGroup = TabBloxFruit:AddRightGroupbox("Redz fake")
+local redzScripts = {
+    {Title = "Long hihi", url = "https://raw.githubusercontent.com/longhihilonghihi-hub/Devs-LongHiHiV2/refs/heads/main/MainV2.txt"},
+    {Title = "Gravity Hud", url = "https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"},
+    {Title = "Blue X Hud", url = "https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"},
+    {Title = "Dragon hub", url = "https://raw.githubusercontent.com/dragonhubdev/dragonwitheveryone/refs/heads/main/Main-BF.lua", preload = function() wait(0); getgenv().team = "Pirates" end},
+    {Title = "King Rùa", url = "https://raw.githubusercontent.com/shinichi-dz/phucshinyeuem/refs/heads/main/KingRuaHub.lua"},
+    {Title = "Trấu V9", url = "https://raw.githubusercontent.com/trungdao2k4/buffalo/refs/heads/main/traurobloxv9.lua"},
+    {Title = "Bacon hub", url = "https://raw.githubusercontent.com/vinh129150/hack/refs/heads/main/BaconHub.lua", preload = function() wait(0); getgenv().team = "Pirates" end},
+    {Title = "Đạt THG V3", url = "https://raw.githubusercontent.com/LuaCrack/DatThg/refs/heads/main/DatThgV3Eng", preload = function() getgenv().Team = "Marines" end},
+    {Title = "Đạt THG V4", url = "https://github.com/LuaCrack/DatThg/raw/refs/heads/main/DatThgVnV4"},
+    {Title = "Bear hub", url = "https://raw.githubusercontent.com/Huylovemy/Bearhudz/refs/heads/main/Bearhud.lua"},
+    {Title = "Redz", url = "https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"},
+    {Title = "Nana", url = "https://raw.githubusercontent.com/NaNacuti/nanabeo/refs/heads/main/NaNaTVHub.lua"},
+    {Title = "Abacaxi Hub", url = "https://raw.githubusercontent.com/real33ms/BloxFruits/refs/heads/main/AbacaxiHubOfc.lua"}
+}
+for _, script in ipairs(redzScripts) do
+    RedzGroup:AddButton({
+        Callback = function()
+            if script.preload then script.preload() end
+            loadstring(game:HttpGet(script.url))()
+        end,
+        Title = script.Title
+    })
+end
+
+-- Banana fake
+local BananaGroup = TabBloxFruit:AddLeftGroupbox("Banana fake")
+local bananaScripts = {
+    {Title = "Trấu V11", url = "https://raw.githubusercontent.com/trungdao2k4/trauroblox/refs/heads/main/traubluev1"},
+    {Title = "Long hihi", url = "https://raw.githubusercontent.com/longhihilonghihi-hub/Devs-LongHiHiV3/refs/heads/main/MainV3.txt"},
+    {Title = "Banana Hub", url = "https://raw.githubusercontent.com/dauphucan061-tech/mbingua/refs/heads/main/4968767887617217.lua"},
+    {Title = "Bloxfruits NX", url = "https://raw.githubusercontent.com/NguyenAnhKhoaVN/Real_AnhKhoa_2279/refs/heads/main/Main-BloxFruitsNX.lua", preload = function() wait(0) end},
+    {Title = "Zis chuối EEG", url = "https://raw.githubusercontent.com/LuaCrack/Zis/refs/heads/main/ZisChuoiEng"},
+    {Title = "Banana KaiTom", url = "https://raw.githubusercontent.com/kaitofixlag-hub/Scriptkaito/refs/heads/main/bananahubkaito.txt"},
+    {Title = "Banana Chiriku", url = "https://raw.githubusercontent.com/Chiriku2013/BananaCatHub/refs/heads/main/BananaCatHub.lua"}
+}
+for _, script in ipairs(bananaScripts) do
+    BananaGroup:AddButton({
+        Callback = function()
+            if script.preload then script.preload() end
+            loadstring(game:HttpGet(script.url))()
+        end,
+        Title = script.Title
+    })
+end
+
+-- Maru hub fake
+local MaruGroup = TabBloxFruit:AddRightGroupbox("Maru hub fake")
+MaruGroup:AddButton({
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/longhihilonghihi-hub/MaruHubV1/refs/heads/main/MainV1.Lua "))()
+    end,
+    Title = "Long hihi"
+})
+
+-- Xeter
+local XeterGroup = TabBloxFruit:AddLeftGroupbox("Xeter")
+for i = 1, 4 do
+    local version = "V" .. i
+    XeterGroup:AddButton({
+        Callback = function()
+            getgenv().Version = version
+            getgenv().Team = "Marines"
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))()
+        end,
+        Title = "Xeter " .. version
+    })
+end
+
+-- Farm V2
+local FarmV2Group = TabBloxFruit:AddRightGroupbox("Farm V2")
+local farmV2Scripts = {
+    {Title = "RubuV5", url = "https://raw.githubusercontent.com/Bubu2k/Rubutv/refs/heads/main/rubuhubv5.lua"},
+    {Title = "RubuV6", url = "https://raw.githubusercontent.com/Teddyseetink/RUBU/refs/heads/main/RUBUV6.lua", preload = function() wait(0) end}
+}
+for _, script in ipairs(farmV2Scripts) do
+    FarmV2Group:AddButton({
+        Callback = function()
+            if script.preload then script.preload() end
+            loadstring(game:HttpGet(script.url))()
+        end,
+        Title = script.Title
+    })
+end
+
+-- Attack m1
+local AttackGroup = TabBloxFruit:AddLeftGroupbox("Attak m1")
+AttackGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Attack-/refs/heads/main/Aura"))() end, Title = "V1"})
+AttackGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/e9c206fd76482ee2"))() end, Title = "V2"})
+
+-- Shop
+local ShopGroup = TabBloxFruit:AddRightGroupbox("Shop")
+ShopGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://luacrack.site/index.php/Quanghuy/raw/Melle"))() end, Title = "Bear hub"})
+
+-- Auto bounty
+local BountyGroup = TabBloxFruit:AddLeftGroupbox("Auto bounty")
+BountyGroup:AddButton({
+    Callback = function()
+        task.wait(0)
+        getgenv().Team = "Pirates"
+        getgenv().Mode = "Auto Bounty"
+        getgenv().On_Ui = true
+        getgenv().Config = {
+            ["Custom Y Run"] = {Enabled = true, ["Y Run"] = 5000},
+            ["Hunt Method"] = {
+                Aimbot = true,
+                ["ESP Player"] = true,
+                ["Hit and Run"] = false,
+                Hitbox = false,
+                ["Hitbox-Size"] = Vector3.new(80, 80, 80),
+                ["Lock Bounty"] = {Bounty = {0, 30000000}, Enabled = false},
+                ["Max Attack Time"] = 60,
+                ["Skip Player"] = {"concac"},
+                ["Use Move Predict"] = false
+            },
+            Items = {
+                ["Blox Fruit"] = {Delay = 0.4, Enable = false, Skills = {C = {Enable = true, HoldTime = 0.15}, F = {Enable = true, HoldTime = 0.1}, V = {Enable = true, HoldTime = 0.2}, X = {Enable = true, HoldTime = 0.1}, Z = {Enable = true, HoldTime = 0.1}}},
+                Gun = {Delay = 0.3, Enable = false, Skills = {X = {Enable = true, HoldTime = 0.1}, Z = {Enable = true, HoldTime = 0.1}}},
+                Melee = {Delay = 0.4, Enable = true, Skills = {C = {Enable = true, HoldTime = 0.5}, X = {Enable = true, HoldTime = 0.2}, Z = {Enable = true, HoldTime = 0.3}}},
+                Sword = {Delay = 0.5, Enable = true, Skills = {X = {Enable = true, HoldTime = 0}, Z = {Enable = true, HoldTime = 1}}}
+            },
+            ["Safe Health"] = {50, 70},
+            Setting = {
+                ["FPS BOOSTER"] = false,
+                ["Fast Delay"] = 0.45,
+                ["Lock Weapons"] = {Melee = "Godhuman"},
+                ["Server Hop"] = {["Minimum player"] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1}},
+                Url = "",
+                ["White Screen"] = false,
+                World = 3
+            },
+            Shop = {["Random Fruit"] = false, ["Store Fruit"] = true, ["Zoro Sword"] = false},
+            Skip = {["Avoid V4"] = false, Fruit = {["Avoid Fruit"] = {"Portal-Portal", "Kitsune-Kitsune"}, Enabled = true}},
+            ["Spam All Skill On V4"] = {Enabled = true, Weapons = {"Melee", "Sword", "Gun", "Blox Fruit"}},
+            Stats = {Enable = false, Point = {}, ["Reset Stats"] = false},
+            Theme = {
+                Custom = {Enable = false, button_color = Color3.fromRGB(255, 221, 252), list_color = Color3.fromRGB(255, 221, 252), liststroke_color = Color3.fromRGB(151, 123, 207), text_font = Enum.Font.Gotham, text_size = 24, title_color = Color3.fromRGB(255, 221, 252), title_font = Enum.Font.FredokaOne, title_size = 40, titleback_color = Color3.fromRGB(169, 20, 255)},
+                Name = "Premium",
+                UIUrl = "rbxassetid://131264767406496"
+            }
+        }
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaAnarchist/3TOC-HUB/refs/heads/main/Auto_Bounty.luau"))()
+    end,
+    Title = "3TOC(Melle+sword)"
+})
+
+-- Auto Lụm Fruit
+local FruitGroup = TabBloxFruit:AddRightGroupbox("Auto Lụm Fruit")
+FruitGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/VoidDeveloper67/VoidHub/refs/heads/main/FruitFarmer"))() end, Title = "Void hub"})
+FruitGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/marisdeptrai/Script-Free/main/FruitFinder.lua"))() end, Title = "Marit Hub"})
+
+-- Farm chest
+local ChestGroup = TabBloxFruit:AddLeftGroupbox("Farm chest")
+ChestGroup:AddButton({
+    Callback = function()
+        wait(0)
+        getgenv().Team = "Marines"
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/trongdeptraihucscript/Main/refs/heads/main/TN-Tp-Chest.lua"))()
+    end,
+    Title = "TrongNguyen hub"
+})
+
+-- Hop sever
+local HopGroup = TabBloxFruit:AddRightGroupbox("Hop sever")
+local hopScripts = {
+    {Title = "Teddy", url = "https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TEDDYHUB-FREEMIUM"},
+    {Title = "Night hub v1", url = "https://github.com/WhiteX1208/Scripts/blob/main/HopScript.luau?raw=true"},
+    {Title = "Night hub v2", url = "https://raw.githubusercontent.com/WhiteX1208/Scripts/refs/heads/main/HopScript.luau"},
+    {Title = "Bacon hub", url = "https://raw.githubusercontent.com/vinh129150/hack/refs/heads/main/HopBoss.lua", preload = function() wait(0); getgenv().team = "Pirates" end},
+    {Title = "Rise-Evo", url = "https://rise-evo.xyz/apiv3/ServerFinder.lua"}
+}
+for _, script in ipairs(hopScripts) do
+    HopGroup:AddButton({
+        Callback = function()
+            if script.preload then script.preload() end
+            loadstring(game:HttpGet(script.url))()
+        end,
+        Title = script.Title
+    })
+end
+
+-- === TAB: FIX LAG ===
+local FixLagGroup = TabFixLag:AddLeftGroupbox("Fix Lag")
+FixLagGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/TIKTOK-BOYCHOIGAME/PH-ICH-U/refs/heads/main/FIXLAGV2.BOYCHOIGAME"))() end, Title = "FixLagV2"})
+FixLagGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/minhducnek/DucaRoblox/refs/heads/main/FixLag.lua"))() end, Title = "Duca Roblox"})
+
+local FogGroup = TabFixLag:AddRightGroupbox("Xoá fog (sương mù)")
+FogGroup:AddButton({
+    Callback = function()
+        local Lighting = game:GetService("Lighting")
+        Lighting.FogStart = 0
+        Lighting.FogEnd = 9000000000
+    end,
+    Title = "Xoá fog"
+})
+
+-- FPS Display
+local FPSGroup = TabFixLag:AddLeftGroupbox("FPS")
+local fpsEnabled = false
+local fpsGui = nil
+local fpsLabel = nil
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+
+FPSGroup:AddToggle("FPSDisplay", {
+    Callback = function(enabled)
+        if enabled then
+            fpsGui = Instance.new("ScreenGui")
+            fpsGui.Name = "FPS_Overlay_System"
+            fpsGui.Parent = game:GetService("CoreGui")
+            fpsLabel = Instance.new("TextLabel")
+            fpsLabel.Parent = fpsGui
+            fpsLabel.BackgroundTransparency = 1
+            fpsLabel.Position = UDim2.new(0.25, 0, 0, 0)
+            fpsLabel.Size = UDim2.new(0, 100, 0, 30)
+            fpsLabel.Font = Enum.Font.GothamBold
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            fpsLabel.TextStrokeTransparency = 0.5
+            fpsLabel.TextSize = 16
+            fpsLabel.BorderSizePixel = 0
+        else
+            if fpsGui then fpsGui:Destroy() end
+        end
+    end,
+    Default = false,
+    Title = "Hiện FPS trên màn hình"
+})
+
+local OptimizeGroup = TabFixLag:AddRightGroupbox("Tối ưu")
+OptimizeGroup:AddButton({Callback = function() game.Lighting.GlobalShadows = false; game.Lighting.FogEnd = 9000000000 end, Title = "Fix Lag Nhẹ (Giữ hình ảnh đẹp)"})
+OptimizeGroup:AddButton({
+    Callback = function()
+        workspace.Terrain.WaterWaveSize = 0
+        workspace.Terrain.WaterReflectance = 0
+        workspace.Terrain.WaterTransparency = 0
+        game.Lighting.GlobalShadows = false
+        game.Lighting.FogEnd = 9000000000
+        game.Lighting.Brightness = 0
+    end,
+    Title = "FPS Boost Siêu Cấp (Potato Mode)"
+})
+OptimizeGroup:AddButton({Callback = function() game.Lighting.GlobalShadows = false; game.Lighting.FogEnd = 9000000000; game.Lighting.Brightness = 0 end, Title = "Siêu Giảm Lag (Extreme Potato Mode)"})
+OptimizeGroup:AddButton({Callback = function() workspace:GetDescendants() end, Title = "Hư Vô (Invisible Map)"})
+
+-- === TAB: 99 NIGHT ===
+local NightGroup = Tab99Night:AddLeftGroupbox("99 night in the forest")
+NightGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))() end, Title = "Foxname Hud"})
+NightGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Night/refs/heads/main/99night"))() end, Title = "Bear hub"})
+
+local KaitunGroup = Tab99Night:AddRightGroupbox("Kaitun Kc")
+KaitunGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/MQPS7/99-Night-in-the-Forset/refs/heads/main/Gfarm"))() end, Title = "Gfarm"})
+
+-- === TAB: SEVER ===
+local HopSvGroup = TabSever:AddLeftGroupbox("Hop sv Low (sv ít người)")
+HopSvGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Hop-sv/refs/heads/main/Huylovemy"))() end, Title = "Hop Sever"})
+
+-- === TAB: TSUNAMI ===
+local TsunamiGroup = TabTsunami:AddLeftGroupbox("tsunami for brainrots")
+local tsunamiScripts = {
+    {Title = "Kdml", url = "https://raw.githubusercontent.com/anowerrrr333-star/scripts/refs/heads/main/kdml_escapetsunamiforbrainrots.lua"},
+    {Title = "OsakaTP2", url = "https://raw.githubusercontent.com/osakaTP2/OsakaTP2/main/Escape%20tsunami%20for%20brainrotsMONEYV5"},
+    {Title = "Escape", url = "https://pastefy.app/ULaWpxKm/raw"},
+    {Title = "Grad brainrot", url = "https://overflow.cx/loader.html"}
+}
+for _, script in ipairs(tsunamiScripts) do
+    TsunamiGroup:AddButton({
+        Callback = function() loadstring(game:HttpGet(script.url))() end,
+        Title = script.Title
+    })
+end
+
+-- === TAB: STEAL A BRAINROT ===
+local StealGroup = TabStealBrainrot:AddLeftGroupbox("Steal a brainrot")
+local stealScripts = {
+    {Title = "Delfi", url = "https://api.luarmor.net/files/v4/loaders/508ec5275ccf4cfb2233e2e042c30948.lua"},
+    {Title = "Go to base", url = "https://pastefy.app/z17fwDLp/raw"},
+    {Title = "Frost hub", url = "https://api.rubis.app/v2/scrap/LDNPBmwyjDSPkgYd/raw", usePost = true}
+}
+for _, script in ipairs(stealScripts) do
+    StealGroup:AddButton({
+        Callback = function()
+            if script.usePost then
+                loadstring(game:HttpGet(script.url, true))()
+            else
+                loadstring(game:HttpGet(script.url))()
+            end
+        end,
+        Title = script.Title
+    })
+end
+
+-- === TAB: FISCH ===
+local FischGroup = TabFisch:AddLeftGroupbox("Fisch")
+FischGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))() end, Title = "Speed hub"})
+FischGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://zenithhub.cloud/panel/script"))() end, Title = "Zenith hub"})
+
+-- === TAB: DOORS ===
+local DoorsGroup = TabDoors:AddLeftGroupbox("Doors")
+DoorsGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/FLOOR-2-DOORS-Sensation-V2-20105"))() end, Title = "Sexsation"})
+
+-- === TAB: THE FORGE ===
+local ForgeGroup = TabTheForge:AddLeftGroupbox("The forge")
+ForgeGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))() end, Title = "Speed hub"})
+ForgeGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/nurvian/Catraz-HUB/refs/heads/main/Catraz/main.lua"))() end, Title = "Cattaz hub"})
+
+-- === TAB: PLANTS VS BRAINROT ===
+local PlantsGroup = TabPlantsVsBrainrot:AddLeftGroupbox("Plants vs brainrot")
+PlantsGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiHub111/Forge/refs/heads/main/No1Dev"))() end, Title = "No1 Dev"})
+PlantsGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))() end, Title = "Speed hub"})
+
+-- === TAB: ZOMBIE ATTACKS ===
+local ZombieGroup = TabZombieAttacks:AddLeftGroupbox("Zombie attacks")
+local zombieScripts = {
+    {Title = "Attack on zombie", url = "https://rawscripts.net/raw/Zombie-Attack-Zombie-Attack-1591"},
+    {Title = "Galaxy Script", url = "https://visionary-cat-25285e.netlify.app/galaxy.lua"},
+    {Title = "Synergy-Hub", url = "https://rawscripts.net/raw/Zombie-Attack-Synergy-Hub-73263"}
+}
+for _, script in ipairs(zombieScripts) do
+    ZombieGroup:AddButton({
+        Callback = function() loadstring(game:HttpGet(script.url))() end,
+        Title = script.Title
+    })
+end
+
+-- === TAB: BEE SWARM SIMULATOR ===
+local BeeGroup = TabBeeSwarm:AddLeftGroupbox("bee swarm simulator")
+local beeScripts = {
+    {Title = "Kron_Hub", url = "https://raw.githubusercontent.com/DevKron/Kron_Hub/refs/heads/main/version_1.0"},
+    {Title = "atlas", url = "https://raw.githubusercontent.com/Chris12089/atlasbss/main/script.lua"},
+    {Title = "Boncuti", url = "https://gist.githubusercontent.com/binhvuong2424-ops/b9b4177ef826ac7c8ade9dbf6796eb4a/raw/4ed5e5e851f05c66a90c9fd4b5404046c5d37cda/BONCUTI-BEE-SWARM-SIMULATOR"}
+}
+for _, script in ipairs(beeScripts) do
+    BeeGroup:AddButton({
+        Callback = function() loadstring(game:HttpGet(script.url))() end,
+        Title = script.Title
+    })
+end
+
+-- === TAB: KING LEGACY ===
+local KingGroup = TabKingLegacy:AddLeftGroupbox("King legacy")
+KingGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Omgshit/Scripts/main/MainLoader.lua"))() end, Title = "OMG Hub"})
+
+-- === TAB: BUILD A BOAT ===
+local BoatGroup = TabBuildABoat:AddLeftGroupbox("build a boat")
+BoatGroup:AddButton({Callback = function() loadstring(game:HttpGet("https://rawscripts.net/raw/Build-A-Boat-For-Treasure-Ultimte-B3BFT-Script-28601"))() end, Title = "Exp"})
+
+-- === TAB: KHÁC ===
+local KhacGroup = TabKhac:AddLeftGroupbox("Khác")
+local khacScripts = {
+    {Title = "Ring", url = "https://raw.githubusercontent.com/Huylovemy/Bearhudhop/refs/heads/main/Huylovewifemy"},
+    {Title = "No Clip", url = "https://raw.githubusercontent.com/Huylovemy/Key/refs/heads/main/Noclip"},
+    {Title = "Ply", url = "https://raw.githubusercontent.com/Huylovemy/Bearhudply/refs/heads/main/Bearhud"},
+    {Title = "Lucky", url = "https://raw.githubusercontent.com/Ytzeno99/bufflucky/refs/heads/main/LucKyRadomFruit.lua"},
+    {Title = "Ply2", url = "https://raw.githubusercontent.com/huytong233-hue/Pls/refs/heads/main/Huyply"},
+    {Title = "Speed And Jump", url = "https://raw.githubusercontent.com/Huylovemy/Key/refs/heads/main/S"},
+    {Title = "hitbox", url = "https://raw.githubusercontent.com/Huylovemy/Hitboxgame/refs/heads/main/Hitboxgame"},
+    {Title = "Ambot", url = "https://raw.githubusercontent.com/Totocoems/Ace/main/Ace"},
+    {Title = "ESP Và AIM", url = "https://raw.githubusercontent.com/Huylovemy/Hack/refs/heads/main/Huydepzai209"},
+    {Title = "God mod v1", url = "https://raw.githubusercontent.com/miglels33/God-Mode-Script/refs/heads/main/GodModeScript.md"},
+    {Title = "God mod v2", url = "https://raw.githubusercontent.com/Rawbr10/Roblox-Scripts/refs/heads/main/God%20Mode%20Script%20Universal"},
+    {Title = "Huy mod", url = "https://raw.githubusercontent.com/Huylovemy/Huy-mod/refs/heads/main/Huy%20mod"}
+}
+for _, script in ipairs(khacScripts) do
+    KhacGroup:AddButton({
+        Callback = function() loadstring(game:HttpGet(script.url))() end,
+        Title = script.Title
+    })
+end
+
+-- === TAB: MOD ===
+local ModGroup = TabMod:AddLeftGroupbox("Hành động")
+ModGroup:AddButton({
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))() end,
+    Title = "Mod hành động"
+})
+
+-- === TAB: MUSIC ===
+local MusicGroup = TabMusic:AddLeftGroupbox("Music Player")
+local currentSound = nil
+
+local function stopMusic()
+    if currentSound then
+        currentSound:Stop()
+        currentSound:Destroy()
+        currentSound = nil
+    end
+end
+
+local function playMusic(id, loop)
+    stopMusic()
+    currentSound = Instance.new("Sound", workspace)
+    currentSound.SoundId = "rbxassetid://" .. tostring(id)
+    currentSound.Looped = loop or false
+    currentSound:Play()
+end
+
+MusicGroup:AddButton({
+    Callback = function() stopMusic() end,
+    Title = "🔇 Dừng Nhạc (Stop)"
+})
+
+MusicGroup:AddButton({
+    Callback = function()
+        local gui = Instance.new("ScreenGui")
+        gui.Name = "BearMusicInput"
+        gui.Parent = game:GetService("CoreGui")
+        
+        local frame = Instance.new("Frame")
+        frame.Parent = gui
+        frame.Size = UDim2.fromOffset(400, 250)
+        frame.Position = UDim2.fromScale(0.5, 0.5)
+        frame.AnchorPoint = Vector2.new(0.5, 0.5)
+        frame.BackgroundColor3 = Color3.fromRGB(50, 10, 10)
+        frame.BorderSizePixel = 0
+        
+        local corner = Instance.new("UICorner")
+        corner.CornerRadius = UDim.new(0, 10)
+        corner.Parent = frame
+        
+        local titleLabel = Instance.new("TextLabel")
+        titleLabel.Parent = frame
+        titleLabel.Text = "NHẬP ID NHẠC"
+        titleLabel.Font = Enum.Font.FredokaOne
+        titleLabel.TextSize = 24
+        titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        titleLabel.BackgroundTransparency = 1
+        titleLabel.Size = UDim2.new(1, 0, 0, 40)
+        titleLabel.Position = UDim2.new(0, 0, 0, 15)
+        
+        local descLabel = Instance.new("TextLabel")
+        descLabel.Parent = frame
+        descLabel.Text = "Dán ID nhạc Roblox vào bên dưới"
+        descLabel.Font = Enum.Font.Gotham
+        descLabel.TextSize = 12
+        descLabel.TextColor3 = Color3.fromRGB(255, 50, 50)
+        descLabel.BackgroundTransparency = 1
+        descLabel.Size = UDim2.new(1, 0, 0, 20)
+        descLabel.Position = UDim2.new(0, 0, 0, 45)
+        
+        local textbox = Instance.new("TextBox")
+        textbox.Parent = frame
+        textbox.Size = UDim2.new(0.8, 0, 0, 40)
+        textbox.Position = UDim2.new(0.5, 0, 0.45, 0)
+        textbox.AnchorPoint = Vector2.new(0.5, 0.5)
+        textbox.BackgroundColor3 = Color3.fromRGB(30, 0, 0)
+        textbox.Font = Enum.Font.GothamBold
+        textbox.TextSize = 14
+        textbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+        textbox.PlaceholderText = "Nhập ID nhạc (vd: 126846792948717)"
+        textbox.Text = ""
+        
+        local textboxCorner = Instance.new("UICorner")
+        textboxCorner.CornerRadius = UDim.new(0, 6)
+        textboxCorner.Parent = textbox
+        
+        local playButton = Instance.new("TextButton")
+        playButton.Parent = frame
+        playButton.Size = UDim2.new(0.7, 0, 0, 35)
+        playButton.Position = UDim2.new(0.5, 0, 0.75, 0)
+        playButton.AnchorPoint = Vector2.new(0.5, 0.5)
+        playButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+        playButton.Text = "PHÁT NHẠC"
+        playButton.Font = Enum.Font.GothamBold
+        playButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        playButton.TextSize = 14
+        
+        local playButtonCorner = Instance.new("UICorner")
+        playButtonCorner.CornerRadius = UDim.new(0, 6)
+        playButtonCorner.Parent = playButton
+        
+        local closeButton = Instance.new("TextButton")
+        closeButton.Parent = frame
+        closeButton.Size = UDim2.new(0, 25, 0, 25)
+        closeButton.Position = UDim2.new(1, -30, 0, 5)
+        closeButton.Text = "X"
+        closeButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+        closeButton.Font = Enum.Font.GothamBold
+        closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        
+        local closeButtonCorner = Instance.new("UICorner")
+        closeButtonCorner.CornerRadius = UDim.new(0, 6)
+        closeButtonCorner.Parent = closeButton
+        
+        playButton.MouseButton1Click:Connect(function()
+            if textbox.Text ~= "" then
+                playMusic(textbox.Text, true)
+                gui:Destroy()
+            end
+        end)
+        
+        closeButton.MouseButton1Click:Connect(function()
+            gui:Destroy()
+        end)
+    end,
+    Title = "🎵 Mở khung nhập ID nhạc"
+})
+
+-- Các bài hát mặc định
+local songs = {
+    {Title = "Mặc Vần Quy Kỳ - Weinchenglong remix", id = "126846792948717", loop = true},
+    {Title = "Nhân sinh quán", id = "124384558101360", loop = true},
+    {Title = "Poker face", id = "92706949906032", loop = true},
+    {Title = "lollipop", id = "100991657598498", loop = false},
+    {Title = "Nổi gió lên", id = "99498025749186", loop = false},
+    {Title = "23", id = "117225633780122", loop = false},
+    {Title = "Đậm đến căn phòng", id = "99203947301337", loop = false},
+    {Title = "Ai là người thương em", id = "138017380471511", loop = false},
+    {Title = "Passo", id = "136729917310719", loop = false}
+}
+
+for _, song in ipairs(songs) do
+    MusicGroup:AddButton({
+        Callback = function() playMusic(song.id, song.loop) end,
+        Title = song.Title
+    })
+end
+
+-- === KHỞI CHẠY ===
+task.wait(2)
+BearLib.ToggleUI()
+print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI")
