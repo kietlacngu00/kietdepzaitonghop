@@ -609,45 +609,16 @@ for _, song in ipairs(songs) do
         Title = song.Title
     })
 end
-    })
-end
 
--- === KHỞI CHẠY ===
+-- === KHỞI CHẠY LẦN LƯỢT ===
 task.wait(2)
 BearLib.ToggleUI()
 print("Kietdpezai Loaded!")
- at bottom-left to show/hide UI")")
-    MusicGroup:AddButton({
-        Callback = function() playMusic(song.id, song.loop) end,
-        Title = song.Title
-    })
-end
 
--- === KHỞI CHẠY ===
-task.wait(2)
-BearLib.ToggleUI()
-print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI") "Ai là người thương em", id = "138017380471511", loop = false},
-    {Title = "Passo", id = "136729917310719", loop = false}
-}
+task.wait(5) -- Chờ 5s sau khi menu hiện
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaifixlag/refs/heads/main/kietfixlag1"))()
+print("Fix Lag 1 Loaded!")
 
-for _, song in ipairs(songs) do
-    MusicGroup:AddButton({
-        Callback = function() playMusic(song.id, song.loop) end,
-        Title = song.Title
-    })
-end
-
--- === KHỞI CHẠY ===
-task.wait(2)
-BearLib.ToggleUI()
-print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI")")
-    MusicGroup:AddButton({
-        Callback = function() playMusic(song.id, song.loop) end,
-        Title = song.Title
-    })
-end
-
--- === KHỞI CHẠY ===
-task.wait(2)
-BearLib.ToggleUI()
-print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI")
+task.wait(5) -- Chờ thêm 5s nữa
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaifixlag/refs/heads/main/kietdeptraikhoaitofixlag1.txt"))()
+print("Kietdepzai, chào mừng bạn!")
