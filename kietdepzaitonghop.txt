@@ -8,7 +8,6 @@ local MainUI = BearLib:CreateWindow({
 })
 
 -- === TẠO CÁC TAB ===
-local TabAdmin = MainUI:AddTab("Admin")
 local TabInfo = MainUI:AddTab("Info")
 local TabBloxFruit = MainUI:AddTab("Blox Fruit")
 local TabFixLag = MainUI:AddTab("Fix Lag")
@@ -46,20 +45,6 @@ InfoGroup:AddButton({
 
 
 -- === TAB: BLOX FRUIT ===
--- Script kietdpezai 
-local PvPGroup = TabBloxFruit:AddRightGroupbox("farm")
-local pvpScripts = {
-    {Title = "kietdpezai redz", url = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzai/refs/heads/main/redzhubfakevip.txt"))()"},
-    {Title = "kietdepzai", url = "loadstring(game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiv2/refs/heads/main/kietdepzai-bananalua-1.txt"))()"},
-}
-for _, script in ipairs(pvpScripts) do
-    PvPGroup:AddButton({
-        Callback = function()
-            loadstring(game:HttpGet(script.url))()
-        end,
-        Title = script.Title
-    })
-end
 -- PvP
 local PvPGroup = TabBloxFruit:AddRightGroupbox("PvP")
 local pvpScripts = {
@@ -85,12 +70,12 @@ end
 -- Farm
 local FarmGroup = TabBloxFruit:AddLeftGroupbox("Farm")
 local farmScripts = {
-    {Title = "Rise-evo", url = "https://rise-evo.xyz/apiv3/main.lua"},
+    {Title = "kietdepzaiv1", url = "https://raw.githubusercontent.com/kietlacngu00/kietdepzai/refs/heads/main/redzhubfakevip.txt"},
     {Title = "Anniecreat", url = "https://raw.githubusercontent.com/Anniecreate86/BloxFruits/refs/heads/main/BetaHub-BF"},
     {Title = "Quan Tum Onyx", url = "https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"},
     {Title = "Teddy Hud", url = "https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TeddyHub.lua"},
     {Title = "Anhdepzai hub", url = "https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubBeta.lua"},
-    {Title = "Leaf hub", url = "https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"},
+    {Title = "Leaf hub", url = "https://raw.githubusercontent.com/kietlacngu00/kietdepzaiv2/refs/heads/main/kietdepzai-bananalua-1.txt"},
     {Title = "Aurora", url = "https://raw.githubusercontent.com/Jadelly261/BloxFruits/main/Aurora"},
     {Title = "NHT X hub", url = "https://raw.githubusercontent.com/trongdeptraihucscript/Main/refs/heads/main/Hoangtrongdepzai.lua"},
     {Title = "Bear hub", url = "https://raw.githubusercontent.com/Huylovemy/Huyscript/refs/heads/main/newscript.txt"},
@@ -615,6 +600,30 @@ local songs = {
     {Title = "23", id = "117225633780122", loop = false},
     {Title = "Đậm đến căn phòng", id = "99203947301337", loop = false},
     {Title = "Ai là người thương em", id = "138017380471511", loop = false},
+    {Title = "Passo", id = "136729917310719", loop = false}
+}
+
+for _, song in ipairs(songs) do
+    MusicGroup:AddButton({
+        Callback = function() playMusic(song.id, song.loop) end,
+        Title = song.Title
+    })
+end
+
+-- === KHỞI CHẠY ===
+task.wait(2)
+BearLib.ToggleUI()
+print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI")")
+    MusicGroup:AddButton({
+        Callback = function() playMusic(song.id, song.loop) end,
+        Title = song.Title
+    })
+end
+
+-- === KHỞI CHẠY ===
+task.wait(2)
+BearLib.ToggleUI()
+print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI") "Ai là người thương em", id = "138017380471511", loop = false},
     {Title = "Passo", id = "136729917310719", loop = false}
 }
 
