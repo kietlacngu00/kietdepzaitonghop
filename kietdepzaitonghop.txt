@@ -609,11 +609,14 @@ for _, song in ipairs(songs) do
         Title = song.Title
     })
 end
+    })
+end
 
 -- === KHỞI CHẠY ===
 task.wait(2)
 BearLib.ToggleUI()
-print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI")")
+print("Kietdpezai Loaded!")
+ at bottom-left to show/hide UI")")
     MusicGroup:AddButton({
         Callback = function() playMusic(song.id, song.loop) end,
         Title = song.Title
