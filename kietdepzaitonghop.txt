@@ -592,7 +592,8 @@ MusicGroup:AddButton({
 
 -- Các bài hát mặc định
 local songs = {
-    {Title = "Mặc Vần Quy Kỳ - Weinchenglong remix", id = "126846792948717", loop = true},
+    {Title = "🇻🇳 Bác Hồ Tuyên Ngôn", id = "119719268399623", loop = false},
+    {Title = "Mặc Vần Quy Kỳ - Remix", id = "126846792948717", loop = true},
     {Title = "Nhân sinh quán", id = "124384558101360", loop = true},
     {Title = "Poker face", id = "92706949906032", loop = true},
     {Title = "lollipop", id = "100991657598498", loop = false},
@@ -603,12 +604,10 @@ local songs = {
     {Title = "Passo", id = "136729917310719", loop = false}
 }
 
+
 for _, song in ipairs(songs) do
     MusicGroup:AddButton({
-        Callback = function() playMusic(song.id, song.loop) end,
-        Title = song.Title
-    })
-end
+        Callback = function() playMusic(song.id, song.loop) task.wait(0.1) for _,v in pairs(workspace:GetChildren()) do if v:IsA("Sound") then v.Volume = 5 end end end,
 
 -- === KHỞI CHẠY LẦN LƯỢT ===
 task.wait(2)
