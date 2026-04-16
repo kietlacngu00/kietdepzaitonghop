@@ -1,6 +1,4 @@
- local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdeptraikhoaitofixlag1/refs/heads/main/kietdeptraikhoaitofixlag1")
-  local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaifixlag/refs/heads/main/kietfixlag1")
-local Library = game:HttpGet("https://raw.githubusercontent.com/Myvkhuy/One-Ui/refs/heads/Bearlib/raw.txt")
+ local Library = game:HttpGet("https://raw.githubusercontent.com/Myvkhuy/One-Ui/refs/heads/Bearlib/raw.txt")
 local BearLib = loadstring(Library)()
 
 local MainUI = BearLib:CreateWindow({
@@ -621,6 +619,16 @@ local songs = {
 }
 
 for _, song in ipairs(songs) do
+    MusicGroup:AddButton({
+        Callback = function() playMusic(song.id, song.loop) end,
+        Title = song.Title
+    })
+end
+
+-- === KHỞI CHẠY ===
+task.wait(2)
+BearLib.ToggleUI()
+print("Kietdpezai Loaded! Press the button at bottom-left to show/hide UI")")
     MusicGroup:AddButton({
         Callback = function() playMusic(song.id, song.loop) end,
         Title = song.Title
