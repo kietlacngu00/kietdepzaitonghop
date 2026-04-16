@@ -607,7 +607,16 @@ local songs = {
 
 for _, song in ipairs(songs) do
     MusicGroup:AddButton({
-        Callback = function() playMusic(song.id, song.loop) task.wait(0.1) for _,v in pairs(workspace:GetChildren()) do if v:IsA("Sound") then v.Volume = 5 end end end,
+                        Callback = function() 
+            playMusic(song.id, song.loop) 
+            task.wait(0.1) 
+            for _,v in pairs(workspace:GetChildren()) do 
+                if v:IsA("Sound") then v.Volume = 5 end 
+            end 
+        end,
+        Title = song.Title
+    })
+end
 
 -- === KHỞI CHẠY LẦN LƯỢT ===
 task.wait(2)
