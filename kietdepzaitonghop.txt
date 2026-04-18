@@ -1,4 +1,4 @@
- local Library = game:HttpGet("https://raw.githubusercontent.com/Myvkhuy/One-Ui/refs/heads/Bearlib/raw.txt")
+ local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiUI/refs/heads/main/raw.txt")
 local BearLib = loadstring(Library)()
 
 local MainUI = BearLib:CreateWindow({
@@ -590,9 +590,9 @@ MusicGroup:AddButton({
     Title = "🎵 Mở khung nhập ID nhạc"
 })
 
--- Các bài hát mặc định
+-- Danh sách nhạc (Đã thay ID Bác Hồ chuẩn Audio)
 local songs = {
-    {Title = "🇻🇳 Bác Hồ Tuyên Ngôn", id = "119719268399623", loop = false},
+    {Title = "🇻🇳 Bác Hồ Đọc Tuyên Ngôn", id = "142517175", loop = false},
     {Title = "Mặc Vần Quy Kỳ - Remix", id = "126846792948717", loop = true},
     {Title = "Nhân sinh quán", id = "124384558101360", loop = true},
     {Title = "Poker face", id = "92706949906032", loop = true},
@@ -604,17 +604,19 @@ local songs = {
     {Title = "Passo", id = "136729917310719", loop = false}
 }
 
-
 for _, song in ipairs(songs) do
     MusicGroup:AddButton({
-                        Callback = function() 
+        Title = song.Title,
+        Callback = function() 
             playMusic(song.id, song.loop) 
-            task.wait(0.1) 
-            for _,v in pairs(workspace:GetChildren()) do 
-                if v:IsA("Sound") then v.Volume = 5 end 
-            end 
-        end,
-        Title = song.Title
+            -- Cập nhật âm lượng cho tất cả âm thanh trong game (theo code cũ của bro)
+            task.wait(0.1)
+            for _,v in pairs(workspace:GetChildren()) do
+                if v:IsA("Sound") then
+                    v.Volume = 5
+                end
+            end
+        end
     })
 end
 
