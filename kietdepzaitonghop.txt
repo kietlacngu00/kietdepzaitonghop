@@ -76,13 +76,13 @@ local farmScripts = {
     {Title = "Teddy Hud", url = "https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TeddyHub.lua"},
     {Title = "Anhdepzai hub", url = "https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubBeta.lua"},
     {Title = "turbo lite ", url = "https://raw.githubusercontent.com/TurboLite/Script/refs/heads/main/MainV2.lua"},
-    {Title = "anh bảnh", url = "https://raw.githubusercontent.com/longhihilonghihi-hub/KhaBanhHubV2/refs/heads/main/obf_m92m5V2G0rk2XM6IPP1L1O701401kdJLV4V5nEyYclj029p00N3SyRWn7S1ax4Uz.lua.txt"},
+    {Title = "anh banh", url = "https://raw.githubusercontent.com/longhihilonghihi-hub/KhaBanhHubV2/refs/heads/main/obf_m92m5V2G0rk2XM6IPP1L1O701401kdJLV4V5nEyYclj029p00N3SyRWn7S1ax4Uz.lua.txt"},
     {Title = "NHT X hub", url = "https://raw.githubusercontent.com/trongdeptraihucscript/Main/refs/heads/main/Hoangtrongdepzai.lua"},
     {Title = "Bear hub", url = "https://raw.githubusercontent.com/Huylovemy/Huyscript/refs/heads/main/newscript.txt"},
-      {Title = "xeno", url = "loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()},
-       {Title = "Night hub", url = "https://raw.githubusercontent.com/WhiteX1208/Scripts/refs/heads/main/BF-Beta.lua"))()"},
-        {Title = "redz hub", url = "https://raw.githubusercontent.com/newredzv3/Scripts/refs/heads/main/main.luau"))(Settings)"},
-                 {Title = "mixi", url = "https://raw.githubusercontent.com/mixihubvip/mixihubvip/refs/heads/main/MixiBanana.lua"},
+     {Title = "xeno", url = "loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()},
+      {Title = "Night hub", url = "https://raw.githubusercontent.com/WhiteX1208/Scripts/refs/heads/main/BF-Beta.lua"))()"},
+      {Title = "redz hub", url = "https://raw.githubusercontent.com/newredzv3/Scripts/refs/heads/main/main.luau"))(Settings)"},
+      {Title = "mixi", url = "https://raw.githubusercontent.com/mixihubvip/mixihubvip/refs/heads/main/MixiBanana.lua"},
     {Title = "Tuấn Anh IOS", url = "https://raw.githubusercontent.com/AnhTuanDzai-Hub/TuanAnhIOS/refs/heads/main/TuanAnhIOS.lua"}
 }
 for _, script in ipairs(farmScripts) do
