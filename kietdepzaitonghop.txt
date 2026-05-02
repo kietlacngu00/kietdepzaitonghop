@@ -1,7 +1,8 @@
 --[[ 
-    KIỆT ĐẸP TRAI HUB - PHIÊN BẢN FIX TRIỆT ĐỂ HIỂN THỊ
-    - Đã bỏ lệnh ép Size để tránh lỗi render nội dung.
-    - Tab Nhập Key được đưa lên đầu để hiện ngay lập tức.
+    KIỆT ĐẸP TRAI HUB - PHIÊN BẢN FIX LỖI SIDEBAR (V9)
+    - Giải pháp: Thêm task.wait(0.5) giữa các Tab để UI kịp Render.
+    - Ưu tiên: Tab Nhập Key lên đầu.
+    - Tự do di chuyển (Không khóa menu).
 ]]
 
 local CorrectKey = "kietdepzai_vn" 
@@ -25,11 +26,12 @@ local KeyWindow = BearLib:CreateWindow({
     Title = "KIỆT ĐẸP TRAI HUB"
 })
 
--- ==========================================
--- TẠO CÁC TAB (Đưa Nhập Key lên trước để tránh trắng trang)
--- ==========================================
+-- Đợi 0.5 giây để Window khởi tạo hoàn toàn Sidebar
+task.wait(0.5)
 
--- Tab 1: NHẬP KEY
+-- ==========================================
+-- TẠO TAB 1: NHẬP KEY (ƯU TIÊN HIỆN ĐẦU)
+-- ==========================================
 local TabKey = KeyWindow:AddTab("Nhập Key")
 local GroupKey = TabKey:AddGroup("Xác thực hệ thống")
 
@@ -47,12 +49,12 @@ GroupKey:AddButton({
     Title = "Xác Nhận Key",
     Callback = function()
         if currentInput == CorrectKey then
-            GroupKey:AddParagraph("✅ Thành công", "Đang mở Menu chính...")
+            GroupKey:AddParagraph("✅ Thành công", "Key chính xác! Đang mở Menu chính...")
             
             local targetUI = game:GetService("CoreGui"):FindFirstChild("KIỆT ĐẸP TRAI HUB")
             if targetUI and targetUI:FindFirstChild("Main") then
                 local mainFrame = targetUI.Main
-                local info = TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut)
+                local info = TweenInfo.new(1.2, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut)
                 local tween = TweenService:Create(mainFrame, info, {
                     Rotation = 360,
                     Size = UDim2.new(0, 0, 0, 0),
@@ -79,29 +81,24 @@ GroupKey:AddButton({
     end
 })
 
--- Tab 2: THÔNG TIN
+-- Đợi tiếp 0.5 giây mới tạo Tab tiếp theo để tránh lỗi sidebar
+task.wait(0.5)
+
+-- ==========================================
+-- TẠO TAB 2: THÔNG TIN
+-- ==========================================
 local TabInfo = KeyWindow:AddTab("Thông Tin")
 local GroupInfo = TabInfo:AddGroup("Chi tiết tác giả")
 GroupInfo:AddParagraph("👤 Người dùng", "Tên: " .. LocalPlayer.DisplayName)
 GroupInfo:AddParagraph("👑 Tác giả", "kietdepzai - 14/05/2013")
 
--- 3. KHÓA DI CHUYỂN (Chỉ khóa, không đổi Size)
-task.spawn(function()
-    task.wait(1) -- Chờ hẳn 1 giây cho UI ổn định
-    local targetUI = game:GetService("CoreGui"):FindFirstChild("KIỆT ĐẸP TRAI HUB")
-    if targetUI and targetUI:FindFirstChild("Main") then
-        local mainFrame = targetUI.Main
-        mainFrame.Active = false 
-        mainFrame.Draggable = false -- KHÓA DI CHUYỂN
-    end
-end)
-
 -- [[ LỆNH CHỜ XÁC MINH ]]
 repeat task.wait() until DaXacMinh == true
 
 -- ==========================================================
--- DÁN SCRIPT TỔNG HỢP GỐC CỦA BẠN DƯỚI ĐÂY
+-- DÁN SCRIPT TỔNG HỢP GỐC CỦA BRO DƯỚI ĐÂY
 -- ==========================================================
+print("Xác minh thành công. Đang mở script gốc...")
        
        local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiUI/refs/heads/main/raw.txt")
 local BearLib = loadstring(Library)()
