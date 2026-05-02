@@ -1,8 +1,7 @@
 --[[ 
-    KIỆT ĐẸP TRAI HUB - HỆ THỐNG XÁC MINH CHẶN ĐẦU
-    - Cách dùng: Dán đoạn này lên trên cùng của script gốc.
-    - Hiệu ứng: Xoay 360 độ rồi biến mất.
-    - Chức năng: Khóa di chuyển, To rõ, Tab thông tin đầy đủ.
+    KIỆT ĐẸP TRAI HUB - FIX LỖI HIỂN THỊ TAB
+    - Đã tạo Tab 1 và Tab 2 rõ ràng ở thanh Sidebar.
+    - Click vào từng Tab ở bên trái để xem nội dung bên phải.
 ]]
 
 local CorrectKey = "kietdepzai_vn" 
@@ -12,96 +11,101 @@ local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
--- Khai báo biến trạng thái (Mặc định là chưa xác minh)
+-- Biến trạng thái để chặn script phía dưới
 local DaXacMinh = false
 
--- 1. Tải thư viện UI (Sử dụng BearLib cho cả Get Key và Menu Gốc)
+-- 1. Tải thư viện UI
 local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiUI/refs/heads/main/raw.txt")
 local BearLib = loadstring(Library)()
 
--- 2. Giao diện Xác Minh Key (Không nhạc)
+-- 2. Tạo cửa sổ chính (Dùng đúng ID ảnh của bro)
 local KeyWindow = BearLib:CreateWindow({
     Image = "rbxassetid://106113185922406", 
     Subtitle = "| Hệ Thống Xác Minh",
     Title = "KIỆT ĐẸP TRAI HUB"
 })
 
--- Khóa di chuyển và Phóng to bảng Get Key
-task.spawn(function()
-    task.wait(0.5)
-    local targetUI = game:GetService("CoreGui"):FindFirstChild("KIỆT ĐẸP TRAI HUB")
-    if targetUI and targetUI:FindFirstChild("Main") then
-        local mainFrame = targetUI.Main
-        mainFrame.Size = UDim2.new(0, 560, 0, 360) -- Kích thước to cố định
-        mainFrame.Active = false 
-        mainFrame.Draggable = false -- KHÓA DI CHUYỂN
-    end
-end)
+-- ==========================================
+-- TẠO TAB 1: THÔNG TIN (Sẽ hiện ở sidebar bên trái)
+-- ==========================================
+local Tab1 = KeyWindow:AddTab("Thông Tin")
+local Group1 = Tab1:AddGroup("Chi tiết người dùng")
 
--- Tab Thông Tin (Theo yêu cầu)
-local InfoTab = KeyWindow:AddTab("Thông Tin")
-local InfoGroup = InfoTab:AddGroup("Chi tiết người dùng")
-InfoGroup:AddParagraph("👤 Người đang chạy", "Tên hiển thị: " .. LocalPlayer.DisplayName .. "\nUser: @" .. LocalPlayer.Name)
-InfoGroup:AddParagraph("👑 Người tạo Script", "kietdepzai\nhappy(sinh nhật) 14/5/2013")
+Group1:AddParagraph("👤 Người đang chạy", "Tên: " .. LocalPlayer.DisplayName .. "\nUser: @" .. LocalPlayer.Name)
+Group1:AddParagraph("👑 Người tạo Script", "kietdepzai\nhappy(sinh nhật) 14/5/2013")
 
--- Tab Nhập Key
-local AuthTab = KeyWindow:AddTab("Nhập Key")
-local AuthGroup = AuthTab:AddGroup("Xác thực")
-local StatusLabel = AuthGroup:AddParagraph("Trạng Thái", "Vui lòng nhập Key để sử dụng Script")
+-- ==========================================
+-- TẠO TAB 2: NHẬP KEY (Sẽ hiện ở sidebar bên trái)
+-- ==========================================
+local Tab2 = KeyWindow:AddTab("Nhập Key")
+local Group2 = Tab2:AddGroup("Xác thực hệ thống")
 
 local currentInput = ""
 
-AuthGroup:AddTextBox({
+Group2:AddTextBox({
     Title = "Nhập Key tại đây",
     Placeholder = "Dán Key vào đây...",
     Callback = function(val) currentInput = val end
 })
 
-AuthGroup:AddButton({
+Group2:AddButton({
     Title = "Xác Nhận Key",
     Callback = function()
         if currentInput == CorrectKey then
-            StatusLabel:SetTitle("✅ Key chính xác")
-            StatusLabel:SetDesc("Đang khởi động Menu chính...")
-
-            -- HIỆU ỨNG XOAY 1 VÒNG RỒI BIẾN MẤT
+            -- Nếu đúng Key, thông báo thành công
+            local successPara = Group2:AddParagraph("✅ Thành công", "Key chính xác! Đang mở Menu chính...")
+            
+            -- HIỆU ỨNG XOAY 360 ĐỘ RỒI BIẾN MẤT
             local targetUI = game:GetService("CoreGui"):FindFirstChild("KIỆT ĐẸP TRAI HUB")
             if targetUI and targetUI:FindFirstChild("Main") then
                 local mainFrame = targetUI.Main
                 local info = TweenInfo.new(1.2, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut)
                 local tween = TweenService:Create(mainFrame, info, {
-                    Rotation = 360, -- Xoay tròn
-                    Size = UDim2.new(0, 0, 0, 0), -- Thu nhỏ
+                    Rotation = 360,
+                    Size = UDim2.new(0, 0, 0, 0),
                     BackgroundTransparency = 1
                 })
                 tween:Play()
-                tween.Completed:Wait() -- Chờ xoay xong mới xóa UI
+                tween.Completed:Wait()
                 targetUI:Destroy()
             end
 
             task.wait(0.1)
-            DaXacMinh = true -- ĐỔI TRẠNG THÁI ĐỂ CHẠY SCRIPT DƯỚI
+            DaXacMinh = true -- Mở chặn để chạy script dưới
         else
-            StatusLabel:SetTitle("❌ Key không đúng")
-            StatusLabel:SetDesc("Vui lòng lấy lại key hoặc kiểm tra lại!")
+            -- Nếu sai Key
+            Group2:AddParagraph("❌ Lỗi", "Key không đúng, vui lòng thử lại!")
         end
     end
 })
 
-AuthGroup:AddButton({
+Group2:AddButton({
     Title = "Lấy Key (Copy Link)",
     Callback = function()
         setclipboard(KeyLink)
-        StatusLabel:SetTitle("ℹ️ Đã copy link")
+        Group2:AddParagraph("ℹ️ Thông báo", "Đã copy link lấy key vào bộ nhớ tạm!")
     end
 })
 
--- [[ ĐÂY LÀ DÒNG CODE CHỜ KEY ĐÚNG ]]
+-- 3. CĂN CHỈNH UI (KHÓA DI CHUYỂN VÀ TO RÕ)
+task.spawn(function()
+    task.wait(0.3)
+    local targetUI = game:GetService("CoreGui"):FindFirstChild("KIỆT ĐẸP TRAI HUB")
+    if targetUI and targetUI:FindFirstChild("Main") then
+        local mainFrame = targetUI.Main
+        mainFrame.Size = UDim2.new(0, 600, 0, 400) -- Chỉnh size to để nhìn rõ nội dung
+        mainFrame.Active = false 
+        mainFrame.Draggable = false -- Khóa không cho kéo
+    end
+end)
+
+-- LỆNH CHẶN: Script gốc phía dưới sẽ không chạy cho đến khi DaXacMinh = true
 repeat task.wait() until DaXacMinh == true
 
 -- ==========================================================
--- DÁN TOÀN BỘ SCRIPT GỐC CỦA BRO Ở DƯỚI ĐÂY (CÁCH RA VÀI DÒNG)
+-- DÁN SCRIPT TỔNG HỢP GỐC CỦA BRO Ở DƯỚI ĐÂY
 -- ==========================================================
+print("Đang khởi chạy Menu tổng hợp...")
        
        local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiUI/refs/heads/main/raw.txt")
 local BearLib = loadstring(Library)()
