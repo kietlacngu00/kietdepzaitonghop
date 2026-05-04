@@ -172,7 +172,7 @@ local BearLib = loadstring(Library)()
 local MainUI = BearLib:CreateWindow({
     Image = "rbxassetid://106113185922406",
     Subtitle = "| Tổng Hợp",
-    Title = "kietdpezai"
+    Title = "kietdepzai"
 })
 
 -- === TẠO CÁC TAB ===
