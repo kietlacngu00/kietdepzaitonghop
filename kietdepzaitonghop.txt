@@ -1,101 +1,170 @@
---[[ 
-    KIỆT ĐẸP TRAI HUB - PHIÊN BẢN CHẮC CHẮN HIỆN NỘI DUNG
-    - Loại bỏ Tab để tránh lỗi Render trên Mobile.
-    - Nội dung hiện thẳng ngay khi mở bảng.
-]]
-
-local CorrectKey = "kietdepzai_vn" 
-local KeyLink = "https://link4sub.com/g8afYYdMco"
-local ScriptGocLink = "https://raw.githubusercontent.com/kietlacngu00/kietdepzaitonghop/refs/heads/main/kietdepzaitonghop.txt"
-
+local MasterKey = "kietdepzai_vn"
+local GetKeyLink = "https://link4sub.com/g8afYYdMco"
+local WhizKey = false
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
--- 1. Tải thư viện UI
-local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiUI/refs/heads/main/raw.txt")
-local BearLib = loadstring(Library)()
+-- 1. KHỞI TẠO GUI
+local Gui = Instance.new("ScreenGui", game.CoreGui)
+Gui.Name = "KietDepTrai_Tab_Auth"
 
--- 2. Tạo cửa sổ chính (Không dùng Tab để hiện nội dung trực tiếp)
-local KeyWindow = BearLib:CreateWindow({
-    Image = "rbxassetid://106113185922406", 
-    Subtitle = "| Hệ Thống Xác Minh",
-    Title = "KIỆT ĐẸP TRAI HUB"
-})
+local BG = Instance.new("Frame", Gui)
+BG.Size = UDim2.new(0, 320, 0, 260)
+BG.Position = UDim2.new(0.5, -160, 0.5, -130)
+BG.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+BG.BorderSizePixel = 0
+BG.Active = false
+BG.Draggable = false -- Khóa di chuyển
 
--- Đợi 0.3s để Window sẵn sàng
-task.wait(0.3)
+local Corner = Instance.new("UICorner", BG)
+Corner.CornerRadius = UDim.new(0, 10)
 
--- 3. TẠO NỘI DUNG TRỰC TIẾP (KHÔNG QUA ADD TAB)
--- Nếu thư viện bắt buộc có Tab mới hiện Group, tôi sẽ dùng 1 Tab duy nhất nhưng tối ưu cách Add
-local MainTab = KeyWindow:AddTab("Xác Minh")
-local AuthGroup = MainTab:AddGroup("Hệ thống xác thực")
+-- Thanh Header chọn Tab
+local Header = Instance.new("Frame", BG)
+Header.Size = UDim2.new(1, 0, 0, 40)
+Header.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+Header.BorderSizePixel = 0
+Instance.new("UICorner", Header).CornerRadius = UDim.new(0, 10)
 
-local currentInput = ""
+local TabGetKeyBtn = Instance.new("TextButton", Header)
+TabGetKeyBtn.Size = UDim2.new(0.5, 0, 1, 0)
+TabGetKeyBtn.Text = "GET KEY"
+TabGetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+TabGetKeyBtn.Font = Enum.Font.GothamBold
+TabGetKeyBtn.BackgroundTransparency = 1
+TabGetKeyBtn.TextSize = 13
 
--- Thêm TextBox
-AuthGroup:AddTextBox({
-    Title = "Nhập mã Key tại đây",
-    Placeholder = "Dán mã Key vào...",
-    Callback = function(val) 
-        currentInput = val 
-    end
-})
+local TabInfoBtn = Instance.new("TextButton", Header)
+TabInfoBtn.Size = UDim2.new(0.5, 0, 1, 0)
+TabInfoBtn.Position = UDim2.new(0.5, 0, 0, 0)
+TabInfoBtn.Text = "THÔNG TIN"
+TabInfoBtn.TextColor3 = Color3.fromRGB(150, 150, 150)
+TabInfoBtn.Font = Enum.Font.GothamBold
+TabInfoBtn.BackgroundTransparency = 1
+TabInfoBtn.TextSize = 13
 
--- Thêm Nút Xác Nhận
-AuthGroup:AddButton({
-    Title = "Xác Nhận Key",
-    Callback = function()
-        if currentInput == CorrectKey then
-            AuthGroup:AddParagraph("✅ Thành công", "Đang tải Menu tổng hợp...")
-            
-            local targetUI = game:GetService("CoreGui"):FindFirstChild("KIỆT ĐẸP TRAI HUB")
-            if targetUI and targetUI:FindFirstChild("Main") then
-                local mainFrame = targetUI.Main
-                local info = TweenInfo.new(1.2, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut)
-                local tween = TweenService:Create(mainFrame, info, {
-                    Rotation = 360,
-                    Size = UDim2.new(0, 0, 0, 0),
-                    BackgroundTransparency = 1
-                })
-                tween:Play()
-                tween.Completed:Wait()
-                targetUI:Destroy()
-            end
+-- Vạch chỉ báo Tab đang chọn
+local TabIndicator = Instance.new("Frame", Header)
+TabIndicator.Size = UDim2.new(0.5, -20, 0, 2)
+TabIndicator.Position = UDim2.new(0, 10, 1, -2)
+TabIndicator.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+TabIndicator.BorderSizePixel = 0
 
-            -- Chạy Menu chính của bro
-            loadstring(game:HttpGet(ScriptGocLink))()
-        else
-            AuthGroup:AddParagraph("❌ Lỗi", "Sai Key rồi bro ơi!")
-        end
-    end
-})
+-- --- CÁC CONTAINER NỘI DUNG ---
 
--- Thêm Nút Get Key
-AuthGroup:AddButton({
-    Title = "Lấy Key (Copy Link)",
-    Callback = function()
-        setclipboard(KeyLink)
-        AuthGroup:AddParagraph("ℹ️ Thông báo", "Đã copy link vượt mã!")
-    end
-})
+-- Trang Get Key (Mặc định)
+local GetKeyPage = Instance.new("Frame", BG)
+GetKeyPage.Size = UDim2.new(1, 0, 1, -40)
+GetKeyPage.Position = UDim2.new(0, 0, 0, 40)
+GetKeyPage.BackgroundTransparency = 1
+GetKeyPage.Visible = true
 
--- Phần thông tin tác giả
-local InfoGroup = MainTab:AddGroup("Thông tin tác giả")
-InfoGroup:AddParagraph("👤 Người dùng", "Tên: " .. LocalPlayer.DisplayName)
-InfoGroup:AddParagraph("👑 Tác giả", "kietdepzai - 14/05/2013")
+local CopyBtn = Instance.new("TextButton", GetKeyPage)
+CopyBtn.Size = UDim2.new(1, -40, 0, 40)
+CopyBtn.Position = UDim2.new(0, 20, 0, 20)
+CopyBtn.Text = "📋 COPY LINK LẤY KEY"
+CopyBtn.BackgroundColor3 = Color3.fromRGB(0, 120, 215)
+CopyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CopyBtn.Font = Enum.Font.GothamBold
+CopyBtn.TextSize = 12
+Instance.new("UICorner", CopyBtn).CornerRadius = UDim.new(0, 6)
 
--- 4. ĐIỀU CHỈNH UI KHI ĐÃ CÓ NỘI DUNG
-task.spawn(function()
-    task.wait(0.5)
-    local targetUI = game:GetService("CoreGui"):FindFirstChild("KIỆT ĐẸP TRAI HUB")
-    if targetUI and targetUI:FindFirstChild("Main") then
-        local mainFrame = targetUI.Main
-        mainFrame.Size = UDim2.new(0, 560, 0, 400)
-        mainFrame.Draggable = true
-        mainFrame.Active = true
+local Box = Instance.new("TextBox", GetKeyPage)
+Box.Size = UDim2.new(1, -40, 0, 45)
+Box.Position = UDim2.new(0, 20, 0, 75)
+Box.PlaceholderText = "🔑 Dán Key vào đây..."
+Box.Text = ""
+Box.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+Box.TextColor3 = Color3.fromRGB(255, 255, 255)
+Box.Font = Enum.Font.Gotham
+Box.TextSize = 14
+Instance.new("UICorner", Box).CornerRadius = UDim.new(0, 6)
+
+local CheckBtn = Instance.new("TextButton", GetKeyPage)
+CheckBtn.Size = UDim2.new(1, -40, 0, 50)
+CheckBtn.Position = UDim2.new(0, 20, 0, 135)
+CheckBtn.Text = "🚀 KÍCH HOẠT"
+CheckBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 70)
+CheckBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheckBtn.Font = Enum.Font.GothamBold
+CheckBtn.TextSize = 15
+Instance.new("UICorner", CheckBtn).CornerRadius = UDim.new(0, 6)
+
+-- Trang Thông Tin
+local InfoPage = Instance.new("Frame", BG)
+InfoPage.Size = UDim2.new(1, 0, 1, -40)
+InfoPage.Position = UDim2.new(0, 0, 0, 40)
+InfoPage.BackgroundTransparency = 1
+InfoPage.Visible = false
+
+local function CreateLabel(text, color, pos)
+    local l = Instance.new("TextLabel", InfoPage)
+    l.Size = UDim2.new(1, -40, 0, 30)
+    l.Position = UDim2.new(0, 20, 0, pos)
+    l.BackgroundTransparency = 1
+    l.Text = text
+    l.TextColor3 = color or Color3.fromRGB(255, 255, 255)
+    l.Font = Enum.Font.GothamBold
+    l.TextSize = 13
+    l.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+CreateLabel("👤 Tác giả: kietdepzai", Color3.fromRGB(255, 215, 0), 20)
+CreateLabel("🎂 Happy: 14/05/2013", Color3.fromRGB(255, 100, 100), 55)
+CreateLabel("🎮 Người chạy: @" .. LocalPlayer.Name, Color3.fromRGB(100, 200, 255), 90)
+CreateLabel("🛡️ Trạng thái: Chờ xác minh", Color3.fromRGB(180, 180, 180), 125)
+
+-- 2. LOGIC CHUYỂN TAB
+TabGetKeyBtn.MouseButton1Click:Connect(function()
+    GetKeyPage.Visible = true
+    InfoPage.Visible = false
+    TabGetKeyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TabInfoBtn.TextColor3 = Color3.fromRGB(150, 150, 150)
+    TweenService:Create(TabIndicator, TweenInfo.new(0.3), {Position = UDim2.new(0, 10, 1, -2)}):Play()
+end)
+
+TabInfoBtn.MouseButton1Click:Connect(function()
+    GetKeyPage.Visible = false
+    InfoPage.Visible = true
+    TabInfoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TabGetKeyBtn.TextColor3 = Color3.fromRGB(150, 150, 150)
+    TweenService:Create(TabIndicator, TweenInfo.new(0.3), {Position = UDim2.new(0.5, 10, 1, -2)}):Play()
+end)
+
+-- 3. LOGIC XÁC MINH
+CopyBtn.MouseButton1Click:Connect(function()
+    setclipboard(GetKeyLink)
+    CopyBtn.Text = "✅ ĐÃ COPY!"
+    task.wait(2)
+    CopyBtn.Text = "📋 COPY LINK LẤY KEY"
+end)
+
+CheckBtn.MouseButton1Click:Connect(function()
+    if Box.Text == MasterKey then
+        CheckBtn.Text = "ĐANG MỞ KHÓA..."
+        local rotate = TweenService:Create(BG, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.InOut), {Rotation = 360})
+        local scale = TweenService:Create(BG, TweenInfo.new(0.6, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {Size = UDim2.new(0,0,0,0), BackgroundTransparency = 1})
+        
+        rotate:Play()
+        rotate.Completed:Connect(function()
+            scale:Play()
+            scale.Completed:Connect(function()
+                Gui:Destroy()
+                WhizKey = true
+            end)
+        end)
+    else
+        Box.Text = ""
+        Box.PlaceholderText = "❌ SAI KEY RỒI!"
+        task.wait(1.5)
+        Box.PlaceholderText = "🔑 Dán Key vào đây..."
     end
 end)
+
+-- 4. CHẶN CODE
+repeat task.wait() until WhizKey == true
+-- Dán script gốc bên dưới:
        
        local Library = game:HttpGet("https://raw.githubusercontent.com/kietlacngu00/kietdepzaiUI/refs/heads/main/raw.txt")
 local BearLib = loadstring(Library)()
